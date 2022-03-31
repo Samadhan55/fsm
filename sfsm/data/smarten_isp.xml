@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="isp_dh_stage_0" model="project.task.type">
+            <field name="sequence">-10</field>
+            <field name="name">New</field>
+            <field name="legend_blocked">Blocked</field>
+            <field name="display_name">New Booking</field>
+        </record>
+        <record id="isp_dh_stage_1" model="project.task.type">
+            <field name="sequence">-9</field>
+            <field name="name">Scheduled</field>
+            <field name="display_name">Scheduled</field>
+            <field name="legend_blocked">Blocked</field>
+        </record>
+        <record id="isp_dh_stage_2" model="project.task.type">
+            <field name="sequence">-8</field>
+            <field name="name">Assigned</field>
+            <field name="display_name">Assigned</field>
+            <field name="legend_blocked">Blocked</field>
+        </record>
+        <record id="isp_dh_stage_3" model="project.task.type">
+            <field name="sequence">-7</field>
+            <field name="name">Rescheduled</field>
+            <field name="display_name">Rescheduled</field>
+            <field name="legend_blocked">Blocked</field>
+        </record>
+        <record id="isp_dh_stage_4" model="project.task.type">
+            <field name="sequence">-6</field>
+            <field name="name">Completed</field>
+            <field name="legend_blocked">Blocked</field>
+            <field name="fold" eval="True"/>
+            <field name="is_closed" eval="True"/>
+        </record>
+        <record id="isp_dh_stage_5" model="project.task.type">
+            <field name="sequence">-5</field>
+            <field name="name">Cancelled</field>
+            <field name="legend_blocked">Blocked</field>
+            <field name="fold" eval="True"/>
+            <field name="is_closed" eval="True"/>
+        </record>
+        <record id="fsm_isp_dh_new_connection" model="project.project">
+            <field name="name">New Connection</field>
+            <field name="is_fsm" eval="True"/>
+            <field name="allow_subtasks" eval="False"/>
+            <field name="allow_timesheets" eval="True"/>
+            <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
+        </record>
+        <record id="fsm_isp_dh_new_connection" model="project.project">
+            <field name="name">New Installation</field>
+            <field name="is_fsm" eval="True"/>
+            <field name="allow_subtasks" eval="False"/>
+            <field name="allow_timesheets" eval="True"/>
+            <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
+        </record>
+        <record id="fsm_isp_dh_onsite_customer" model="project.project">
+            <field name="name">On site Customer Service</field>
+            <field name="is_fsm" eval="True"/>
+            <field name="allow_subtasks" eval="False"/>
+            <field name="allow_timesheets" eval="True"/>
+            <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
+        </record>
+        <record id="fsm_isp_dh_onsite_network" model="project.project">
+            <field name="name">On site Newtwork Service</field>
+            <field name="is_fsm" eval="True"/>
+            <field name="allow_subtasks" eval="False"/>
+            <field name="allow_timesheets" eval="True"/>
+            <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
+        </record>
+    </data>
+</odoo>
