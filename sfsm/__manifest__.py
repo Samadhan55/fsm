@@ -28,6 +28,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'data/smarten_isp.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
