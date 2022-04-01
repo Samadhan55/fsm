@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_smarten/sfsm_smarten/sfsm,smarten/sfsm.smarten/sfsm,model_smarten/sfsm_smarten/sfsm,base.group_user,1,1,1,1
+access_fs_files,access.fs.files,model_fs_files,,1,1,1,1
+access_device_data,access.device.data,model_device_data,,1,1,1,1
