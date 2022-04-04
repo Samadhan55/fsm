@@ -10,12 +10,14 @@ class ProjectTask(models.Model):
     pod = fields.Char(string='POD')#change it to many to one later.
     pon=fields.Char(string='PON')
 
-    cancel_note = fields.Text(string="Cancellation Note:")
+    cancellation_note = fields.Text(string="Cancellation Note:")
     reschedule_note = fields.Text(string="Reschedule Note:")
     completion_note = fields.Text(string="Completion Note:")
     scheduled_date_start=fields.Datetime(string="Scheduled Date",default=fields.datetime.now())
     sla_time=fields.Float(string="SLA Time",default=48)
     scheduled_date_end=fields.Datetime(compute='_scheduled_end')
+    stage_name = fields.Char(default=lambda self: self.stage_id.name)
+
 
 
     @api.depends('sla_time','scheduled_date_start')

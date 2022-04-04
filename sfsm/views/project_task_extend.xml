@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_task_form_inherited_dish_home">
+            <field name="name">project.task.form.inherited.dish.home</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="user_ids" position="after">
+                    <field name="stage_name" invisible="1"/>
+                    <field name="pod"/>
+                    <field name="pon"/>
+                    <field name="scheduled_date_start" widget="datetime" readonly = "1"/>
+                    <field name="scheduled_date_end" widget="datetime" readonly = "1"/>
+                    <field name="sla_time"/>
+                </field>
+                <page name="extra_info" position="after">
+                    <page name="stage_data" string="Stage Descriptions">
+                        <field name="reschedule_note" widget="HTML"
+                               attrs="{'invisible':[('reschedule_note','=','')], 'readonly':[('stage_name','!=','Rescheduled')]}"/>
+                        <field name="cancellation_note" widget="HTML"
+                               attrs="{'invisible':[('cancellation_note','=','')], 'readonly':[('stage_name','!=','Cancelled')]}"/>
+                        <field name="completion_note" widget="HTML"
+                               attrs="{'invisible':[('completion_note','=','')], 'readonly':[('stage_name','!=','Completed')]}"/>
+                    </page>
+
+                </page>
+            </field>
+        </record>
+
+    </data>
+</odoo>
