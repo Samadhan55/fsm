@@ -2,7 +2,7 @@ from odoo import api, fields, models
 
 class FsFiles(models.Model):
     _name='fs.isp.files'
-    _description="To store Binary files uploaded by field service worker"
+    _description="To store documents(Images) uploaded by field service worker"
 
     description=fields.Char(string='Description')
     file_img=fields.Binary(string='Image')
