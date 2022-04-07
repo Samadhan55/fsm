@@ -1,0 +1,99 @@
+<odoo>
+    <record id="view_reschedule_form" model="ir.ui.view">
+        <field name="name">Reschedule Task</field>
+        <field name="model">reschedule.data</field>
+        <field name="arch" type="xml">
+            <form string="Reschedule Task">
+                <div>Fill the below form to Reschedule the task</div>
+                <group>
+                    <group>
+                        <field name="start_time"/>
+                        <field name="SLA_time"/>
+                    </group>
+                    <field name="r_desc" widget="html"/>
+                </group>
+                <footer>
+                    <button name="action_reschedule" class="btn-primary" type="object" string="Reschedule"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="reschedule_wizard_action" model="ir.actions.act_window">
+        <field name="name">Reschedule Task</field>
+        <field name="res_model">reschedule.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_reschedule_form"/>
+    </record>
+    <record id="view_cancel_form" model="ir.ui.view">
+        <field name="name">Cancel Task</field>
+        <field name="model">cancel.data</field>
+        <field name="arch" type="xml">
+            <form string="Are You Sure?">
+                <div>Fill the details to cancel the task</div>
+                <group>
+                    <field name="c_desc" widget="html"/>
+                </group>
+                <footer>
+                    <button name="action_cancel" class="btn-primary" type="object" string="Cancel"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="cancel_wizard_action" model="ir.actions.act_window">
+        <field name="name">Cancel Task</field>
+        <field name="res_model">cancel.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_cancel_form"/>
+    </record>
+
+    <record id="view_completion_form" model="ir.ui.view">
+        <field name="name">Complete Task</field>
+        <field name="model">complete.data</field>
+        <field name="arch" type="xml">
+            <form string="Are You Sure?">
+                <sheet>
+                    <div>Fill the details to complete the task</div>
+                    <group>
+                        <group>
+                            <field name="ont_sn"/>
+                            <field name="olt_name"/>
+                            <field name="db_number"/>
+                        </group>
+                        <group>
+                            <field name="db_port"/>
+                            <field name="power_level"/>
+                            <field name="dropwire_length"/>
+                        </group>
+                    </group>
+                    <div>Fill the remarks of the task:</div>
+                    <field name="c_desc" widget="html"/>
+                    <group>
+                        <field name="r_docs">
+                            <tree editable="bottom">
+                                <field name="description" widget="text"/>
+                                <field name="file_img" widget="image" class="oe_avatar"
+                                       options="{'preview_image': 'image_small', 'size': [500, 500]}"/>
+                            </tree>
+                        </field>
+                    </group>
+                        <field name="customer_signature" widget="signature"/>
+                    <footer>
+                        <button name="action_complete" class="btn-primary" type="object" string="Mark as Done"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="complete_wizard_action" model="ir.actions.act_window">
+        <field name="name">Complete Task</field>
+        <field name="res_model">complete.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_completion_form"/>
+    </record>
+</odoo>

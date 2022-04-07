@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_project_form_inherited_dish_home">
+            <field name="name">project.project.form.inherited.dish.home</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="hr_timesheet.project_invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="is_fsm" position="after">
+                    <field name="is_fsm_isp" attrs="{'invisible':[('is_fsm','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

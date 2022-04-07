@@ -29,7 +29,9 @@
     'data': [
         'security/ir.model.access.csv',
         'data/smarten_isp.xml',
+        'wizard/state_wizards.xml',
         'views/partner_form_extend.xml',
+        'views/project_extend.xml',
         'views/project_task_extend.xml',
         'views/views.xml',
         'views/templates.xml',
