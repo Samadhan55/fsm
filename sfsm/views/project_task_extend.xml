@@ -6,6 +6,9 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
 
+                <field name="stage_id" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </field>
                 <field name="user_ids" position="after">
                     <field name="stage_name" invisible="1"/>
                     <field name="is_fsm_isp" invisible="1"/>
@@ -42,6 +45,16 @@
                     </page>
 
                 </page>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_task_kanban_inherited_dish_home">
+            <field name="name">project.task.form.inherited.dish.home</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <field name="stage_id" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </field>
             </field>
         </record>
 
