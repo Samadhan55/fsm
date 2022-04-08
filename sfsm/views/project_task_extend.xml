@@ -9,30 +9,34 @@
                 <field name="user_ids" position="after">
                     <field name="stage_name" invisible="1"/>
                     <field name="is_fsm_isp" invisible="1"/>
+                    <field name="project_name" invisible="1"/>
                     <field name="pod" attrs="{'invisible':[('is_fsm_isp','=',False)]}"/>
-                    <field name="pon" attrs="{'invisible':[('is_fsm_isp','=',False)]}"/>
+                    <field name="pon" attrs="{'invisible':['|',('is_fsm_isp','=',False),('project_name','=','New Installation')]}"/>
                     <field name="scheduled_date_start" attrs="{'invisible':[('is_fsm_isp','=',False)]}" widget="datetime" readonly="1"/>
-                    <field name="scheduled_date_end" attrs="{'invisible':[('is_fsm_isp','=',False)]}" widget="datetime" readonly="1"/>
-                    <field name="sla_time" attrs="{'invisible':[('is_fsm_isp','=',False)]}"/>
+                    <field name="scheduled_date_end" attrs="{'invisible':['|',('is_fsm_isp','=',False),('stage_name','in',['New'])]}" widget="datetime" readonly="1"/>
+                    <field name="sla_time" attrs="{'invisible':['|',('is_fsm_isp','=',False),('stage_name','in',['New'])]}"/>
                 </field>
                 <xpath expr="//button[@name='action_assign_to_me']" position="replace">
                     <button name="%(reschedule_wizard_action)d" type="action" string="Reschedule" class="oe_highlight"
-                            attrs="{'invisible': ['|',('is_fsm_isp','=',False), ('stage_name', 'in', ['Cancelled', 'Rescheduled', 'Completed'])]}"/>
+                            attrs="{'invisible': ['|',('is_fsm_isp','=',False), ('stage_name', 'in', ['New', 'Cancelled', 'Rescheduled', 'Completed'])]}"/>
                     <button name="%(cancel_wizard_action)d" type="action" string="Cancel" class="oe_highlight"
-                            attrs="{'invisible': ['|',('is_fsm_isp','=',False), ('stage_name', 'in',['Completed', 'Canceled'])]}"/>
+                            attrs="{'invisible': ['|',('is_fsm_isp','=',False), ('stage_name', 'in',['Completed', 'Cancelled'])]}"/>
 
                 </xpath>
                 <xpath expr="//button[@name='action_fsm_validate']" position="replace">
-                    <button name="%(complete_wizard_action)d" type="action" string="Complete" class="oe_highlight" attrs="{'invisible': [('stage_name', 'in', ['Completed','NewBooking','Canceled','Scheduled'])]}"/>
+                    <button name="%(complete_wizard_action)d" type="action" string="Complete" class="oe_highlight" attrs="{'invisible': [('stage_name', 'in', ['Completed','New','Cancelled'])]}"/>
                 </xpath>
                 <page name="extra_info" position="after">
                     <page name="stage_data" string="Stage Descriptions" attrs="{'invisible':[('is_fsm_isp','=',False)]}">
-                        <field name="reschedule_note" widget="HTML"
-                               attrs="{'invisible':[('reschedule_note','=','')], 'readonly':[('stage_name','!=','Rescheduled')]}"/>
-                        <field name="cancellation_note" widget="HTML"
-                               attrs="{'invisible':[('cancellation_note','=','')], 'readonly':[('stage_name','!=','Cancelled')]}"/>
-                        <field name="completion_note" widget="HTML"
-                               attrs="{'invisible':[('completion_note','=','')], 'readonly':[('stage_name','!=','Completed')]}"/>
+                        <label for="reschedule_note" string="Reschedule Description:"/>
+                        <field name="reschedule_note"
+                               attrs="{'readonly':[('stage_name','!=','Rescheduled')]}"/>
+                        <label for="cancellation_note" string="Cancellation Description:"/>
+                        <field name="cancellation_note"
+                               attrs="{'readonly':[('stage_name','!=','Cancelled')]}"/>
+                        <label for="completion_note" string="Complete stage Description:"/>
+                        <field name="completion_note"
+                               attrs="{'readonly':[('stage_name','!=','Completed')]}"/>
                         <field name="customer_signature" widget="signature"/>
                     </page>
 

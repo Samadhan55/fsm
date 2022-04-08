@@ -20,7 +20,8 @@ class ProjectTask(models.Model):
     images = fields.One2many('fs.isp.files', 'rel_task_id', string="Documents")
     customer_signature = fields.Binary(string="Customer's Signature")
 
-    stage_name = fields.Char(default=lambda self: self.stage_id.name)
+    stage_name = fields.Char(default='New')
+    project_name = fields.Char(related="project_id.name")
     #is_fsm_isp = fields.Boolean(default=lambda self: self.project_id.is_fsm_isp,readonly=True)
     is_fsm_isp = fields.Boolean(related="project_id.is_fsm_isp")
 
@@ -32,12 +33,17 @@ class ProjectTask(models.Model):
     @api.constrains('scheduled_date_start')
     def _change_state_to_rescheduled(self):
         if self.reschedule_note:
-            self.stage_id=self.env['project.task.type'].search([('name','=','Rescheduled'), \
-                                                                ('project_ids','=',self.project_id.id)])
+            self.stage_id=self.env.ref("sfsm.isp_dh_stage_3").id
+            # self.stage_id=self.env['project.task.type'].search([('name','=','Rescheduled'), \
+            #                                                     ('project_ids','=',self.project_id.id)])
     @api.onchange('stage_id')
     def _t(self):
+        self.stage_name=self.stage_id.name
         print(self.stage_id)
+        print(self.project_id.name)
+        print(self.project_name)
         print(self.env['project.task.type'].browse(self.stage_id.id+1).name)
+        print(self.env.ref("sfsm.isp_dh_stage_2"))
 
     @api.onchange('planned_date_begin','planned_date_end')
     @api.constrains('planned_date_begin','planned_date_end')
