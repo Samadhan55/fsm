@@ -13,8 +13,11 @@
                         <field name="last_name"/>
                     </group>
                 </field>
+                <xpath expr="//page[@name='sales_purchases']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//notebook[last()]" position="inside">
-                    <page name="user_documents" string="Documents" >
+                    <page name="user_documents" string="Documents">
                         <field name="documents">
                             <tree editable="bottom">
                                 <field name="description" widget="text"/>

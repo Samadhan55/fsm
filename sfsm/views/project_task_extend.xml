@@ -26,6 +26,7 @@
                 <xpath expr="//button[@name='action_fsm_validate']" position="replace">
                     <button name="%(complete_wizard_action)d" type="action" string="Complete" class="oe_highlight" attrs="{'invisible': [('stage_name', 'in', ['Completed','New','Cancelled'])]}"/>
                 </xpath>
+                <xpath expr="//button[@name='action_fsm_validate']" position="replace"/>
                 <page name="extra_info" position="after">
                     <page name="stage_data" string="Stage Descriptions" attrs="{'invisible':[('is_fsm_isp','=',False)]}">
                         <label for="reschedule_note" string="Reschedule Description:"/>
