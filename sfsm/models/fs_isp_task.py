@@ -44,7 +44,15 @@ class ProjectTask(models.Model):
         print(self.project_name)
         print(self.env['project.task.type'].browse(self.stage_id.id+1).name)
         print(self.env.ref("sfsm.isp_dh_stage_2"))
-
+    @api.constrains('stage_id')
+    def _kanban_state(self):
+        self.stage_name = self.stage_id.name
+        if self.stage_name == 'New':
+            self.kanban_state='normal'
+        elif self.stage_name =='Cancelled':
+            self.kanban_state='blocked'
+        else:
+            self.kanban_state='Ready'
     @api.onchange('planned_date_begin','planned_date_end')
     @api.constrains('planned_date_begin','planned_date_end')
     def _change_state_to_scheduled(self):

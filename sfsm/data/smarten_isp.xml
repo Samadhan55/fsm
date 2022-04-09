@@ -43,6 +43,7 @@
             <field name="name">New Installation</field>
             <field name="is_fsm" eval="True"/>
             <field name="is_fsm_isp" eval="True"/>
+            <field name="allow_recurring_tasks" eval="False"/>
             <field name="allow_subtasks" eval="False"/>
             <field name="allow_timesheets" eval="True"/>
             <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
@@ -52,6 +53,7 @@
             <field name="is_fsm" eval="True"/>
             <field name="is_fsm_isp" eval="True"/>
             <field name="allow_subtasks" eval="False"/>
+            <field name="allow_recurring_tasks" eval="False"/>
             <field name="allow_timesheets" eval="True"/>
             <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
         </record>
@@ -59,6 +61,7 @@
             <field name="name">On site Newtwork Service</field>
             <field name="is_fsm" eval="True"/>
             <field name="is_fsm_isp" eval="True"/>
+            <field name="allow_recurring_tasks" eval="False"/>
             <field name="allow_subtasks" eval="False"/>
             <field name="allow_timesheets" eval="True"/>
             <field name="type_ids" eval="[(4, ref('isp_dh_stage_0')), (4, ref('isp_dh_stage_1')), (4, ref('isp_dh_stage_2')),(4, ref('isp_dh_stage_3')),(4, ref('isp_dh_stage_4')),(4, ref('isp_dh_stage_5'))]"/>
